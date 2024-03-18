@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/2e9c4ef2-7aac-42ef-98a9-98d9f472c206/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/CarsAppPySoap",
+    "appService.deploySubpath": "."
+}
