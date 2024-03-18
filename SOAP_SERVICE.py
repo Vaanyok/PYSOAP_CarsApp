@@ -10,7 +10,7 @@ from spyne.model.complex import Iterable
 from spyne.model.primitive import Integer, Unicode
 from wsgiref.simple_server import make_server
 from spyne.server.wsgi import WsgiApplication
-
+import os
 
 def round_to_nearest_x6(number):
     # Calculate the rounded value
@@ -50,9 +50,9 @@ if __name__ == '__main__':
         out_protocol=Soap11(),
     )
 
-    wsgi_application = WsgiApplication(application)
-    import os
-    port = int(os.environ.get('PORT',8000))
-    server = make_server('0.0.0.0', port, wsgi_application)
-    print("Listening on {port}")
+    port = int(os.environ.get('PORT', 8000))
+    host = '0.0.0.0'
+    server = make_server(host, port, WsgiApplication(application))
+    print(f"Listening on {host}:{port}")
     server.serve_forever()
+
