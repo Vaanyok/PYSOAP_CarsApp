@@ -51,6 +51,8 @@ if __name__ == '__main__':
     )
 
     wsgi_application = WsgiApplication(application)
-    server = make_server('127.0.0.1', 8000, wsgi_application)
-    print("Listening on http://127.0.0.1:8000")
+    import os
+    port = int(os.environ.get('PORT',8000))
+    server = make_server('0.0.0.0', port, wsgi_application)
+    print("Listening on {port}")
     server.serve_forever()
