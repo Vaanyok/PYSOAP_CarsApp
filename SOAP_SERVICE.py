@@ -14,18 +14,18 @@ import os
 
 def round_to_nearest_x6(number):
     # Calculate the rounded value
-    print(number)
+    
     rounded_value = number % int(number)
     if rounded_value >= 0.6:
         virgule_value = rounded_value - 0.6
         result = int(number) + 1.0 + virgule_value + 0.0
     else:
         result = number
-
+    print(round(result, 2))
     return round(result, 2)
 
 
-class HelloWorldService(Service):
+class CalculAPITIME(Service):
     @rpc(Unicode, Integer, _returns=Iterable(Unicode))
     def say_hello(ctx, name, times):
         for i in range(times):
@@ -43,9 +43,9 @@ class HelloWorldService(Service):
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-
+    print("TEST")
     application = Application(
-        [HelloWorldService], 'spyne.examples.hello.soap',
+        [CalculAPITIME], 'spyne.examples.hello.soap',
         in_protocol=Soap11(validator='lxml'),
         out_protocol=Soap11(),
     )
